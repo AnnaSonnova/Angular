@@ -1,7 +1,8 @@
 export interface IProduit {
-    id:Number;
-    nom:String;
-    prix:Number;
-    fabricant:String;
-    rabais?:Boolean; //propriete optionnel
+    id:number;
+    nom:string;
+    prix:number;
+    fabricant:string;
+    rabais?:boolean; //propriete optionnel
+    estEditable?:boolean;
 }
