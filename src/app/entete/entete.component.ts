@@ -9,17 +9,22 @@ import { AuthService } from '../auth.service';
 
 export class EnteteComponent {
   titre:String = "Administration";
+  soustitre:String = "";
   msgConnecter:string = "Se connecter";
   estConnecte:boolean;
 
   constructor(private authServ:AuthService){
     console.log(this.authServ)
-    this.estConnecte = this.authServ.etatConnexion;
+    this.estConnecte = this.authServ.getConnexion();
+    this.authServ.getNomPage().subscribe((nom)=>{
+      this.soustitre = nom;
+    })
+    console.log(this.soustitre)
   }
 
   seConnecter(){
     this.estConnecte = !this.estConnecte;
-    this.authServ.etatConnexion = this.estConnecte;
+    this.authServ.setConnexion(this.estConnecte) ;
     if(this.estConnecte){
       this.msgConnecter = "Se déconnecter";
     }else{

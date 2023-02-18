@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { BieroService } from '../biero.service';
+import { IBiere } from '../ibiere';
+import { IListeBiere } from '../iliste-biere';
 import { IProduit } from '../iproduit';
 
 @Component({
@@ -7,28 +10,44 @@ import { IProduit } from '../iproduit';
   templateUrl: './liste.component.html',
   styleUrls: ['./liste.component.scss']
 })
-export class ListeComponent {
-  produits:Array<IProduit>;
-  sontEditable:boolean = true;
-  
-  constructor(private authServ:AuthService){
-    this.produits = [...Array(5)].map((item, index)=>{
+export class ListeComponent implements OnInit{
+  produits:Array<IBiere>;
+  sontEditable:boolean = false;
+  estConnecte:boolean = false;
+
+  constructor(private authServ:AuthService, private bieroServ:BieroService){
+    this.produits = [];/*[...Array(5)].map((item, index)=>{
       return {  nom : "element " + index, 
               fabricant: "brasserie xyz", 
               prix: (10 + index*2), 
               id:1+index,
               rabais : !(index % 3)};
-    })
-    console.log(this.produits)
+    })*/
+    //console.log(this.produits)
 
-    console.log(this.authServ.etatConnexion)
+    //console.log(this.authServ.etatConnexion)
+    
   }
-  verifConnexion(){
-    console.log(this.authServ.etatConnexion)
-    if(!this.authServ.etatConnexion && this.sontEditable == true){
+
+  ngOnInit(): void {
+    this.authServ.statutConnexion().subscribe((etat:boolean)=>{
+      this.estConnecte = etat;
+      if(this.estConnecte === false){
+        this.sontEditable = false;
+      }
+    })
+    this.authServ.setNomPage("Liste");
+    this.bieroServ.getBieres().subscribe((listeBiere)=>{
+      this.produits = listeBiere.data;
+    });
+
+  }
+  /*verifConnexion(){
+    //console.log(this.authServ.etatConnexion)
+    if(!this.authServ.getConnexion() && this.sontEditable == true){
       this.sontEditable = false;
     }
-  }
+  }*/
   estEnSolde(unProduit:IProduit){
     return (unProduit.prix < 15 && unProduit.rabais);
   }

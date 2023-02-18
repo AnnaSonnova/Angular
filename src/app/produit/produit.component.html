@@ -4,14 +4,14 @@
     <div class="liste">
 
         <article *ngIf="!peutEditer; else editable" class="produit"  >
-            <p>Nom : {{produit.nom}}</p>
-            <p>Fabricant : {{produit.fabricant}}</p>
-            <p>Est éditable ? <input type="checkbox" (change)="changeEditable()" [(ngModel)]="peutEditer"></p>
+            <p><a routerLink="/produit/{{produit.id_biere}}">Nom : {{produit.nom}}</a></p>
+          <p>Fabricant : {{produit.brasserie}}</p>
+            <p *ngIf="estConnecte">Est éditable ? <input type="checkbox" (change)="changeEditable()" [(ngModel)]="peutEditer"></p>
         </article>
         <ng-template #editable>
             <article  class="produit" >
                 <p>Nom : <input type="text" [(ngModel)]="produit.nom"></p>
-                <p>Fabricant : <input type="text"  [(ngModel)]="produit.fabricant"></p>            
+                <p>Fabricant : <input type="text"  [(ngModel)]="produit.brasserie"></p>            
             </article>
         </ng-template>
     </div>   

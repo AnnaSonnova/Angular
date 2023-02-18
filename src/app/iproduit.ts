@@ -2,7 +2,7 @@ export interface IProduit {
     id:number;
     nom:string;
     prix:number;
-    fabricant:string;
-    rabais?:boolean; //propriete optionnel
+    fabricant:string;   
+    rabais?:boolean;    // Rabais est optionnel
     estEditable?:boolean;
 }

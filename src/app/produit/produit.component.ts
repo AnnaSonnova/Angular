@@ -1,4 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { AuthService } from '../auth.service';
+import { IBiere } from '../ibiere';
 import { IProduit } from '../iproduit';
 
 @Component({
@@ -7,13 +9,26 @@ import { IProduit } from '../iproduit';
   styleUrls: ['./produit.component.scss']
 })
 export class ProduitComponent{
-  @Input() produit:IProduit;
+  @Input() produit:IBiere;
   @Output() peutEditerChange = new EventEmitter<boolean>();
   @Input() peutEditer:boolean;
+  estConnecte:boolean = false;
+  constructor(private authServ:AuthService){
 
+    this.authServ.statutConnexion().subscribe((etat)=>{
+      this.estConnecte = etat;
+      if(etat === false){
+        this.peutEditer = false;
+      }
+
+    })
+  }
   changeEditable(){
-    console.log(this.peutEditer)
+    if(!this.estConnecte){
+      this.peutEditer = false;
+    }
     this.peutEditerChange.emit(this.peutEditer);
+      
   }
 
 }
