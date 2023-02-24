@@ -4,15 +4,30 @@
     <div class="liste">
 
         <article *ngIf="!peutEditer; else editable" class="produit"  >
-            <p><a routerLink="/produit/{{produit.id_biere}}">Nom : {{produit.nom}}</a></p>
-          <p>Fabricant : {{produit.brasserie}}</p>
+            <h1><a routerLink="/produit/{{produit.id_biere}}"> {{produit.nom}}</a></h1>
+          <p>Brasserie : {{produit.brasserie}}</p>
+          <p>Date d'ajoute :  {{ produit.date_ajout}}</p>  
+          <p>Date de modification: {{ produit.date_modif}} </p>
+          <div>
+
+              <img src="assets/1.jpg" alt="My Image" >
+          </div>  
             <p *ngIf="estConnecte">Est éditable ? <input type="checkbox" (change)="changeEditable()" [(ngModel)]="peutEditer"></p>
         </article>
         <ng-template #editable>
-            <article  class="produit" >
+            <!-- <article  class="produit" >
                 <p>Nom : <input type="text" [(ngModel)]="produit.nom"></p>
-                <p>Fabricant : <input type="text"  [(ngModel)]="produit.brasserie"></p>            
-            </article>
+                <p>Brasserie :  <input type="text"  [(ngModel)]="produit.brasserie"></p> 
+                         
+            </article> -->
+            <form [formGroup]="modifForm">
+                <p>Nom: <input formControlName="nom"></p>
+                <p>Brasserie: <input formControlName="brasserie"></p>
+                <p>Description: <textarea formControlName="description"></textarea></p>
+                <button (click)="modifier()" [disabled]=" !modifForm.dirty || !modifForm.valid">Modif</button>
+                <button (click)="annuler()" [disabled]=" !modifForm.dirty ">Annuler</button>
+
+            </form>
         </ng-template>
     </div>   
     

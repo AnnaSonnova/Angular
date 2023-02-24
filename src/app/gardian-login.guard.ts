@@ -11,6 +11,9 @@ export class GardianLoginGuard implements CanActivate {
   constructor(private authServ:AuthService, private router:Router){
     this.authServ.statutConnexion().subscribe((etat)=>{
       this.estConnecte = etat;
+      // if(this.estConnecte==false){
+      //   //page
+      // }
     })
   }
   canActivate(

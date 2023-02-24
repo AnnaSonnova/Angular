@@ -1,13 +1,30 @@
 
     .produit{
+        text-align: left;
         margin: 30px;
         min-height: 200px;
-        width: 200px;
-        color: rgb(4, 46, 75);
-        background-color: rgba(89, 224, 236, 0.492);
+        width: 300px;
+        color: rgb(83, 2, 2);
+        background-color: rgb(231, 168, 10);
         padding: 20px ;
         border-radius: 40px;
-        box-shadow: rgba(199, 236, 233, 0.67) 0px 1px 2px, rgba(161, 233, 238, 0.648) 0px 2px 4px, rgba(85, 149, 164, 0.723) 0px 4px 8px, rgba(60, 122, 133, 0.733) 0px 8px 16px, rgba(42, 73, 80, 0.896) 0px 16px 32px, rgba(130, 224, 229, 0.901) 0px 20px 78px;
+        box-shadow: rgba(234, 126, 54, 0.67) 0px 1px 2px, rgba(233, 151, 70, 0.648) 0px 2px 4px, rgba(222, 198, 62, 0.723) 0px 4px 8px, rgba(228, 178, 60, 0.733) 0px 8px 16px, rgba(131, 106, 25, 0.896) 0px 16px 32px, rgba(229, 151, 130, 0.901) 0px 20px 78px;
+        a{
+            font-size: 30px;
+            color: rgb(46, 28, 2);
+            text-decoration: none;
+        }
+    }
+    h1{
+        text-align: center;
+        
+    }
+    img {
+        border-radius: 40px;
+        width: 250px;
+       
+        
+        
     }
     
 

@@ -11,4 +11,5 @@ export class AccueilComponent {
   constructor(private authServ:AuthService){
     this.authServ.setNomPage("Accueil");
   }
+  items = new Array(12);
 }

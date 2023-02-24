@@ -5,23 +5,27 @@
 //     font-family: 'Titan One', cursive;
   
 // }
+
 :host{ /*app-entete*/
     
     display: flex;
-    
-    background-color: rgba(39, 132, 141, 0.841);
+    justify-content: space-between;
+    background-color: rgb(255, 179, 0);
     padding: 20px;
+    color: aliceblue;
     button{
         width: 150px;
     }
     a {/*:not(:has(h1)){*/
         text-decoration: none;
+        color: aliceblue;
     }
     nav{
         display: flex;
         align-items: center;
         a{
             margin-left: 16px;
+            color: aliceblue;
             &.estActif{
                 font-weight: bold;
             }

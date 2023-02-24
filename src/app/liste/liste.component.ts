@@ -5,6 +5,7 @@ import { IBiere } from '../ibiere';
 import { IListeBiere } from '../iliste-biere';
 import { IProduit } from '../iproduit';
 
+
 @Component({
   selector: 'app-liste',
   templateUrl: './liste.component.html',
@@ -15,7 +16,7 @@ export class ListeComponent implements OnInit{
   sontEditable:boolean = false;
   estConnecte:boolean = false;
 
-  constructor(private authServ:AuthService, private bieroServ:BieroService){
+  constructor(private authServ:AuthService, private bieroServ:BieroService ){
     this.produits = [];/*[...Array(5)].map((item, index)=>{
       return {  nom : "element " + index, 
               fabricant: "brasserie xyz", 
@@ -39,6 +40,7 @@ export class ListeComponent implements OnInit{
     this.authServ.setNomPage("Liste");
     this.bieroServ.getBieres().subscribe((listeBiere)=>{
       this.produits = listeBiere.data;
+   
     });
 
   }

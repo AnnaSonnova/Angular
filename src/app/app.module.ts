@@ -9,8 +9,9 @@ import { DetailComponent } from './detail/detail.component';
 import { EnteteComponent } from './entete/entete.component';
 import { NonTrouverComponent } from './non-trouver/non-trouver.component';
 import { ListeComponent } from './liste/liste.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -26,9 +27,13 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule,
+    ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  
 })
 export class AppModule { }
+

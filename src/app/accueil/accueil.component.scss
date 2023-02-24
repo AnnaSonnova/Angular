@@ -1,0 +1,9 @@
+.accueil{
+    background-color: rgb(33, 14, 0);
+    display: grid;
+    grid-template-columns: repeat(4,[col] 1fr);;
+    img{
+        width: 300px;
+        border-radius: 50px;
+    }
+}
